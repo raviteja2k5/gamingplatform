@@ -1,6 +1,5 @@
 import '../styles/navbar.css';
-
-const logoSrc = '/src/assets/logo.png';
+import logoSrc from '../assets/logo.png';
 
 function Navbar({ searchTerm, onSearchChange }) {
   return (
@@ -17,10 +16,13 @@ function Navbar({ searchTerm, onSearchChange }) {
             />
             <span className="brand-fallback">N</span>
           </span>
+
           <span className="brand-text">NovaPlay</span>
         </a>
+
         <label className="search-panel" aria-label="Search games">
           <span className="search-glyph" aria-hidden="true" />
+
           <input
             type="search"
             value={searchTerm}
