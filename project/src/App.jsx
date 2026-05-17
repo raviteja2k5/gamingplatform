@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import './App.css';
 
 const API_URL =
-  "https://api.allorigins.win/raw?url=https://www.freetogame.com/api/games?category=shooter";
+  "https://api.allorigins.win/raw?url=https%3A%2F%2Fwww.freetogame.com%2Fapi%2Fgames%3Fcategory%3Dshooter";
 
 function App() {
   const [games, setGames] = useState([]);
