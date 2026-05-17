@@ -1,0 +1,223 @@
+.navbar-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: min(1440px, calc(100% - 32px));
+  margin: 16px auto 0;
+  animation: navReveal 0.8s var(--ease-luxury) both;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: max-content minmax(240px, 520px) max-content;
+  align-items: center;
+  gap: 24px;
+  min-height: 76px;
+  padding: 12px 16px;
+  border: 1px solid rgba(245, 197, 66, 0.28);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(26, 26, 26, 0.86), rgba(10, 10, 10, 0.74)),
+    rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(24px);
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.58),
+    0 0 34px rgba(212, 175, 55, 0.16),
+    inset 0 1px 0 rgba(255, 204, 51, 0.14);
+}
+
+.brand,
+.brand-mark,
+.nav-links,
+.search-panel {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 12px;
+  padding-right: 8px;
+}
+
+.brand-mark {
+  position: relative;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(255, 204, 51, 0.28);
+  border-radius: 12px;
+  background: #000000;
+  box-shadow:
+    0 0 28px rgba(245, 197, 66, 0.2),
+    inset 0 0 18px rgba(212, 175, 55, 0.08);
+  overflow: hidden;
+}
+
+.brand-mark img,
+.footer-logo img {
+  position: absolute;
+  inset: 5px;
+  width: 100%;
+  height: 100%;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  object-fit: contain;
+  z-index: 2;
+}
+
+.brand-fallback,
+.footer-logo span {
+  color: #000000;
+  font-weight: 1000;
+  font-size: 1.35rem;
+}
+
+.brand-text {
+  color: #ffcc33;
+  font-size: 1.2rem;
+  font-weight: 950;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 22px rgba(245, 197, 66, 0.35);
+}
+
+.search-panel {
+  position: relative;
+  gap: 10px;
+  width: 100%;
+  min-height: 50px;
+  padding: 0 18px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.42);
+  box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.66);
+  transition:
+    transform 0.36s var(--ease-luxury),
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.search-panel:focus-within {
+  transform: scale(1.015);
+  border-color: rgba(255, 204, 51, 0.72);
+  box-shadow:
+    inset 0 0 22px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(245, 197, 66, 0.22);
+}
+
+.search-glyph {
+  position: relative;
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #f5c542;
+  border-radius: 50%;
+  color: #f5c542;
+  box-shadow: 0 0 12px rgba(245, 197, 66, 0.26);
+}
+
+.search-glyph::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 2px;
+  right: -5px;
+  bottom: -3px;
+  border-radius: 999px;
+  background: #f5c542;
+  transform: rotate(45deg);
+}
+
+.search-panel input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  color: #ffcc33;
+  background: transparent;
+}
+
+.search-panel input::placeholder {
+  color: rgba(212, 175, 55, 0.5);
+}
+
+.nav-links {
+  gap: 6px;
+}
+
+.nav-links a {
+  position: relative;
+  padding: 12px 13px;
+  color: rgba(255, 204, 51, 0.72);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    color 0.28s ease,
+    text-shadow 0.28s ease,
+    transform 0.32s var(--ease-luxury);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 7px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #ffcc33, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.32s var(--ease-luxury);
+}
+
+.nav-links a:hover {
+  color: #ffcc33;
+  text-shadow: 0 0 18px rgba(245, 197, 66, 0.48);
+  transform: translateY(-2px);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+@keyframes navReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1100px) {
+  .navbar {
+    grid-template-columns: 1fr;
+    border-radius: 26px;
+  }
+
+  .brand,
+  .nav-links {
+    justify-content: center;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar-wrap {
+    width: min(100% - 20px, 1440px);
+  }
+
+  .navbar {
+    padding: 12px;
+  }
+
+  .nav-links a {
+    padding: 9px 8px;
+    font-size: 0.72rem;
+  }
+}

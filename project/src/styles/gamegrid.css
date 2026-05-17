@@ -1,0 +1,34 @@
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+.empty-state {
+  padding: 34px;
+  border: 1px solid rgba(245, 197, 66, 0.24);
+  border-radius: var(--radius-md);
+  color: #ffcc33;
+  background: rgba(10, 10, 10, 0.72);
+  box-shadow: var(--shadow-gold-soft);
+}
+
+@media (max-width: 1200px) {
+  .game-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 880px) {
+  .game-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
