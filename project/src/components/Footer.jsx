@@ -1,6 +1,5 @@
 import '../styles/footer.css';
-
-const logoSrc = '/src/assets/logo.png';
+import logoSrc from '../assets/logo.png';
 
 function Footer() {
   return (
@@ -16,6 +15,7 @@ function Footer() {
           />
           <span>N</span>
         </span>
+
         <div>
           <strong>NovaPlay</strong>
           <p>Premium worlds. Elite battles. Cinematic discovery.</p>
