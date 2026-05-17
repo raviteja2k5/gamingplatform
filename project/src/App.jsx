@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import './App.css';
 
 const API_URL =
-  'https://corsproxy.io/?https://www.freetogame.com/api/games?category=shooter';
+  'https://corsproxy.io/?https://www.freetogame.com/api/games%3Fcategory%3Dshooter';
 
 function App() {
   const [games, setGames] = useState([]);
@@ -17,22 +17,37 @@ function App() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        setLoading(true);
-        setError('');
-        const response = await axios.get(API_URL);
+  let mounted = true;
+
+  const fetchGames = async () => {
+    try {
+      setLoading(true);
+      setError('');
+
+      const response = await axios.get(API_URL);
+
+      if (mounted) {
         setGames(response.data);
-      } catch (err) {
-        console.log(err);
+      }
+    } catch (err) {
+      console.error('API Error:', err);
+
+      if (mounted) {
         setError('Unable to load elite games. Please try again soon.');
-      } finally {
+      }
+    } finally {
+      if (mounted) {
         setLoading(false);
       }
-    };
+    }
+  };
 
-    fetchGames();
-  }, []);
+  fetchGames();
+
+  return () => {
+    mounted = false;
+  };
+}, []);
 
   const filteredGames = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
