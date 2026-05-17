@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import './App.css';
 
 const API_URL =
-  'https://corsproxy.io/?https://www.freetogame.com/api/games%3Fcategory%3Dshooter';
+  "https://api.allorigins.win/raw?url=https://www.freetogame.com/api/games?category=shooter";
 
 function App() {
   const [games, setGames] = useState([]);
